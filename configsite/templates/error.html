@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Error</title>
+    </head>
+    <body>
+      <p>An error has occured!</p>
+      {% for para in error %}
+        <p>{{para}}</p>
+      {% endfor %}
+      <a href="/">Try again?</a>
+    </body>
+  </html>

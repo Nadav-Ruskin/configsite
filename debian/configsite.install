@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "configsite/jsons/* opt/venvs/configsite/lib/python3.5/site-packages/configsite/jsons"
+echo "configsite/templates/* opt/venvs/configsite/lib/python3.5/site-packages/configsite/templates"

@@ -1,0 +1,13 @@
+[Unit]
+Description=DMS configuration server
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+WorkingDirectory=/opt/venvs/configsite/lib/python3.5/site-packages/configsite/
+ExecStart=/opt/venvs/configsite/bin/gunicorn --bind 0.0.0.0:8000 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

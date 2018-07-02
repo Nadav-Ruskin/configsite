@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "DMS_Config",
+  "description": "A configuration for the DMS program.",
+  "type": "object",
+  "properties": {
+    "name":  { "type": "string" },
+    "contact": { "type": "string", "enum": ["email", "phone", "mail"] },
+    "car": { "type": "string", "enum": ["audi", "volvo", "hyundai"] },
+    "fast_results": { "type": "boolean" },
+    "accurate_results": { "type": "boolean" },
+    "exposure": { "type": "integer" , "minimum": 0, "maximum": 100 }
+  },
+  "required": ["name", "contact", "car", "fast_results", "accurate_results", "exposure"]
+}

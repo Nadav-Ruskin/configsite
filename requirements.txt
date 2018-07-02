@@ -1,0 +1,9 @@
+setuptools==21.2.1
+click==6.7
+Flask==1.0.2
+gunicorn==19.8.1
+itsdangerous==0.24
+Jinja2==2.10
+jsonschema==2.6.0
+MarkupSafe==1.0
+Werkzeug==0.14.1

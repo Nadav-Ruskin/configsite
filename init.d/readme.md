@@ -1,0 +1,1 @@
+This is a backup init.d, not currently used because systemd is used.

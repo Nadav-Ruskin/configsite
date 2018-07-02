@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DMS Config</title>
+</head>
+<body>
+  <form method="post" action="{{ url_for('success') }}">
+    <div>
+      <label for="name">Name:</label>
+      <br>
+      <input name="name" id="name" value="{{existing_config['name']}}">
+    </div>
+    <div>
+      <label for="contact">Preferred contact method:</label>
+      <br>
+      <input type="radio" id="contactChoice1" name="contact" value="email" {% if (existing_config["contact"] == "email") %} checked {% endif %}>
+      <label for="contactChoice1">Email</label>
+
+      <input type="radio" id="contactChoice2" name="contact" value="phone" {% if (existing_config["contact"] == "phone") %} checked {% endif %}>
+      <label for="contactChoice2">Phone</label>
+
+      <input type="radio" id="contactChoice3" name="contact" value="mail" {% if (existing_config["contact"] == "mail") %} checked {% endif %}>
+      <label for="contactChoice3">Mail</label>
+    </div>
+    <div>
+      <label for="car">Car:</label>
+      <br>
+      <select name="car">
+        <option value="audi" {% if (existing_config["car"] == "audi") %} selected="selected" {% endif %}>Audi</option>
+        <option value="volvo" {% if (existing_config["car"] == "volvo") %} selected="selected" {% endif %}>Volvo</option>
+        <option value="hyundai" {% if (existing_config["car"] == "hyundai") %} selected="selected" {% endif %}>Hyundai</option>
+      </select>
+    </div>
+    <div>
+      <p>Optimization:</p>
+      <br>
+      <input type="checkbox" name="fast_results" {% if (existing_config["fast_results"]) %} checked {% endif %}>I want fast results
+      <input type="checkbox" name="accurate_results" {% if (existing_config["accurate_results"]) %} checked {% endif %}>I want accurate results
+    </div>
+    <div>
+      Exposure (0-100):
+      <input type="number" name="exposure" min="0" max="100" value="{{existing_config['exposure']}}">
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</body>
+</html>
