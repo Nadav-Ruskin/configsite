@@ -6,4 +6,4 @@ itsdangerous==0.24
 Jinja2==2.10
 jsonschema==2.6.0
 MarkupSafe==1.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
