@@ -2,13 +2,13 @@
 A small server that handles configurations.  
 I had to bash my head against the wall a lot learning how to use the various technologies used in this project. Hopefully you won't have to.
 
-This giode assumes some level of familiarity with Python, Docker, and Git.
+This guide assumes some level of familiarity with Python, Docker, and Git.
 
 # Background information
 __Requirement__: Prototype a server exposed from a local port, that serves a configuration form.
 * The server needs to be easily installable and reinstallable.
 * The server needs to run at startup. 
-* The server needs to be developped on Windows (using WSL) or Linux arm64 and it needs to run on ARM architecture. 
+* The server needs to be developed on Windows (using WSL) or Linux arm64 and it needs to run on ARM architecture. 
 * The server should cross-packageable.
 
 __Server host__: Debian on ARM.  
@@ -64,7 +64,7 @@ The server's backend will be written in Python (`python3`), using `Flask`. The s
 
 `configsite/templates`: Flask will look for templates here by default.
 
-`configsite/templates/error.html`: A template containing the error page. Note that it uses Jina2's `for in` loop.
+`configsite/templates/error.html`: A template containing the error page. Note that it uses Jinja2's `for in` loop.
 
 `configsite/templates/form.html`: An example form that utilizes various HTML form objects. Note `<form method="post" action="{{ url_for('success') }}">`. The action will be rendered to the url page bound to `success`.
 
@@ -79,11 +79,11 @@ __Giant pitfall__: when file has an executable permission (like on WSL on a moun
 
 `debian/configsite.service`: A systemd unit file, automatically picked up and installed by `dh`. I had to install the package once to learn exactly where it will be installed, to know what paths to put in it. The variables are arcane, gathered from multiple and conflicting "how to create systemv unit file" guides.
 
-`debian/configsite.triggers`: tells dpkg what packages you're interested in. The package currently only says that it wants `python3`, althought it probably requires `python3-venv` too. Need to test that. __Crappy pitfall__: File has to end with newline.
+`debian/configsite.triggers`: Tells dpkg what packages you're interested in. The package currently only says that it wants `python3`, although it probably requires `python3-venv` too. Need to test that. __Crappy pitfall__: File has to end with newline.
 
 `debian/control`: Arcane, not sure what the difference between it and `debian/configsite.triggers` is. It claims to do things like tell you what packages are required.
 
-`debian/rules`: A makefile. Currenlty just says to use `dh` on the target with some additional flags.
+`debian/rules`: A makefile. Currently just says to use `dh` on the target with some additional flags.
 
 >#### A note about the dockerfiles:
 > They'll try to install configsite .deb packages if they find them in the `/dockerfiles` folder. It's just a convenience thing, originally intended to test the systemd unit files. However, docker doesn't use systemd...
@@ -103,7 +103,7 @@ __Giant pitfall__: when file has an executable permission (like on WSL on a moun
 
 `init.d/readme.md`: Explains the above.
 
-# Prequisites:
+# Perquisites:
 ```bash
 # One-time requirements installation.
 # Install packages required to develop.
@@ -121,7 +121,7 @@ chmod +x get-docker.sh
 sudo usermod -aG docker $USER
 cd ../..
 rm -rf temp
-# You have to log out from linux to allow docker to run without sudo
+# You have to log out from Linux to allow docker to run without sudo
 ```
 
 # Running the project:
@@ -187,7 +187,7 @@ If you want to install the resulting package in your actual machine or anywhere 
 [^1]: `<architecture>` being the appropriate architecture the package was built for.
 
 # Debugging flask in Pycharm
-A bit complicated. Pycharm doesn't recognize virtual environment declerations on my machine (conda included) so I'm using the global interpreter. For debugging I have to change  the `Script path:` to `Module name:` using the little arrow next to it, and use the following:
+A bit complicated. Pycharm doesn't recognize virtual environment declarations on my machine (Conda included) so I'm using the global interpreter. For debugging I have to change  the `Script path:` to `Module name:` using the little arrow next to it, and use the following:
 
 ![pycharm setup image](images/pycharm.png)
 
